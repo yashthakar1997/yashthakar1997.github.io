@@ -1,0 +1,25 @@
+{
+  "name": "yash-",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "gh-pages -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yashthakar1997/yashthakar1997.github.io.git"
+  },
+  "keywords": [
+    "Portfolio"
+  ],
+  "author": "Yash Thakar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yashthakar1997/yashthakar1997.github.io/issues"
+  },
+  "homepage": "https://github.com/yashthakar1997/yashthakar1997.github.io",
+  "devDependencies": {
+    "gh-pages": "^2.2.0"
+  }
+}
