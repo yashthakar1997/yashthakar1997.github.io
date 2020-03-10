@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap calendar</title>
+
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker-standalone.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <Header>
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Bootstrap calendar</a>
+                </div>
+            </div><!-- /.container-fluid -->
+        </nav>
+    </Header>
+    <section>
+        <div class="container">
+            <div class="panel panel-default">
+                <div class="panel-heading">Normal calendar</div>
+                <div class="panel-body">
+                    <input type="date">
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">customized</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <span class="panel start"></span>
+                        <span class="panel end"></span>
+                        <!-- <span class="glyphicon glyphicon-calendar btn btn-primary open-calendar"></span> -->
+                        <div class='input-group date ' id='datetimepicker1'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+            <div class="container">
+                <p class="navbar-text">Developed with <span class="glyphicon glyphicon-heart"></span> by yash thakar</p>
+            </div>
+        </nav>
+    </footer>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker1').datetimepicker({
+                format: 'DD/MM/YYYY',
+                keepOpen: true,
+                useCurrent: false,
+                debug: true,
+                showClear: true,
+                focusOnShow: false,
+                showClose: true,
+                minDate: new Date()
+            });
+        });
+
+        $('.open-calendar').on('click', function(e) {
+            $('.calendar').toggle();
+        })
+        var selectedDate;
+        $("#datetimepicker1").on("dp.show", function (e) {
+            e.preventDefault();
+            $('.day').on('click', function (en) {
+                    // alert('day clicked');
+                    en.preventDefault();
+                    selectedDate = $(this).data('day');
+                    $('.start').html($(this).data('day'));
+                    $(this).addClass('startDate');
+            })
+        });
+
+        $("#datetimepicker1").on("dp.change", function (e) {
+            $('.day').on('click', function () {
+                    // alert('day clicked');
+                    $('.end').html($(this).data('day'));
+                    console.log(selectedDate);
+                    $("#datetimepicker1").datetimepicker({
+                        defaultDate: new Date(selectedDate)
+                    });
+            })
+        });
+
+    </script>
+</body>
+
+</html>
