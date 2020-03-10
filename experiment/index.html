@@ -11,9 +11,10 @@
     <!-- Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker-standalone.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-date-range-picker/0.20.0/daterangepicker.min.css" />
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker-standalone.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css"> -->
     <style>
 
     </style>
@@ -49,10 +50,7 @@
                         <span class="panel end"></span>
                         <!-- <span class="glyphicon glyphicon-calendar btn btn-primary open-calendar"></span> -->
                         <div class='input-group date ' id='datetimepicker1'>
-                            <input type='text' class="form-control" />
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar calendar"></span>
-                            </span>
+                            <input type="text" name="dates" value="" class="form-control" />
                         </div>
                     </div>
                 </div>
@@ -67,51 +65,19 @@
         </nav>
     </footer>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-date-range-picker/0.20.0/jquery.daterangepicker.min.js"></script>
+
     <script type="text/javascript">
-        $(function () {
-            $('#datetimepicker1').datetimepicker({
-                format: 'DD/MM/YYYY',
-                keepOpen: true,
-                useCurrent: false,
-                debug: true,
-                showClear: true,
-                focusOnShow: false,
-                showClose: true,
-                minDate: new Date()
-            });
+        $('input[name="dates"]').dateRangePicker({
+            singleMonth: true,
+            showShortcuts: false,
+            showTopbar: false
         });
-
-        $('.open-calendar').on('click', function(e) {
-            $('.calendar').toggle();
-        })
-        var selectedDate;
-        $("#datetimepicker1").on("dp.show", function (e) {
-            e.preventDefault();
-            $('.day').on('click', function (en) {
-                    // alert('day clicked');
-                    en.preventDefault();
-                    selectedDate = $(this).data('day');
-                    $('.start').html($(this).data('day'));
-                    $(this).addClass('startDate');
-            })
-        });
-
-        $("#datetimepicker1").on("dp.change", function (e) {
-            $('.day').on('click', function () {
-                    // alert('day clicked');
-                    $('.end').html($(this).data('day'));
-                    console.log(selectedDate);
-                    $("#datetimepicker1").datetimepicker({
-                        defaultDate: new Date(selectedDate)
-                    });
-            })
-        });
-
     </script>
 </body>
 
